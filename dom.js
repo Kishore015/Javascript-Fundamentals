@@ -1,53 +1,58 @@
-const heading = document.getElementsByTagName('h1');
+// selecting elements in the DOM
+// get element by ID
+const heading = document.getElementById('main-heading').innerText;
+console.log(`Got heading from site - ${heading}`);
 
-const para = document.getElementsByClassName('para')
+// get elements by class name
 
-console.log(heading)
+const className = document.getElementsByClassName('list-item');
+console.log(className)
 
-console.log(para)
+// get element by tag name
+const divEle = document.getElementsByTagName('div')
+console.log(divEle)
 
+// querySelector()
 
-// Create html heading
+const headingQuery = document.querySelector('#main-heading').innerText;
+console.log(headingQuery)
 
-const heading1 = document.createElement('h1');
+// querySelectorAll()
 
-const heading_text = document.createTextNode('This is created by Javascript');
+const listitems = document.querySelectorAll('.list-item');
+console.log(listitems)
 
-heading1.appendChild(heading_text);
+/* ======== DOM Manipulation =============== */
 
-const div = document.getElementById('welcome');
+// styling elements
 
-div.appendChild(heading1);
+const title = document.querySelector('#main-heading');
+title.style.color = "blue";
 
-
-// Create a paragraph
-
-const para1 = document.createElement('p');
-
-const para_text = document.createTextNode('This is also created by Javascript');
-
-para1.appendChild(para_text);
-
-
-// const div = document.getElementById('welcome2')
-div.appendChild(para1);
-
-heading1.style.color = "blue";
-
-heading1.style.background = "rgb(255,0,0)";
-
-// Create Image
-const img = document.createElement('img');
-img.src = "https://getbootstrap.com/docs/5.1/assets/img/bootstrap-icons.png";
-
-const image_div = document.getElementById('welcome2');
-image_div.appendChild(img);
-img.style.width = "500px";
-
-function myFunction(){
-    let paragraph = document.getElementById('hidden_para');
-    paragraph.style.display = "block";
+const li = document.querySelectorAll('.list-item');
+// li.forEach(item => item.style.color = "green");
+for(let i=0; i<li.length;i++){
+    li[i].style.color = "brown"
 }
 
 
 
+
+// creating elements
+const ul = document.querySelector('ul');
+const newLi = document.createElement('li');
+ul.append(newLi)
+newLi.innerText = "Transformers";
+
+// Add or remove attributes
+newLi.setAttribute('class', 'list-item')
+newLi.removeAttribute('class')
+
+// Add or remove classes
+newLi.classList.add('list-item');
+newLi.classList.remove('list-item')
+
+console.log(newLi.classList.contains('list-item'))
+
+// remove element
+newLi.remove()

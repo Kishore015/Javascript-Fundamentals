@@ -1,0 +1,179 @@
+JS Data Types
+==============
+1. Number
+2. String
+3. Boolean
+4. Undefined
+5. Null
+6. Symbol
+7. BigInt
+8. Array
+9. Object
+10. Set
+11. Map
+
+Exammples:
+==========
+Number
+-----------
+let age = 25; // Integer
+let temperature = 36.6; // Floating-point number
+let negative = -10; // Negative number
+
+String:
+--------
+let name = "John"; // Double quotes
+let greeting = 'Hello'; // Single quotes
+let template = `Hi, ${name}!`; // Template literal
+
+Boolean:
+--------
+let isLoggedIn = true;
+let isPaid = false;
+
+Undefined:
+----------
+let value; // Automatically assigned 'undefined'
+console.log(value); // undefined
+
+Null:
+------
+let user = null; // Explicitly set to 'null'
+
+Symbol:
+-------
+let sym1 = Symbol("uniqueKey");
+let sym2 = Symbol("uniqueKey");
+console.log(sym1 === sym2); // false (each Symbol is unique)
+
+BigInt:
+-------
+let bigNumber = 123456789012345678901234567890n; // BigInt literal
+let anotherBig = BigInt("12345678901234567890"); // BigInt constructor
+
+Array:
+-------
+let fruits = ["apple", "banana", "cherry"];
+let numbers = [1, 2, 3, 4];
+
+Object:
+------
+let person = {
+  name: "Alice",
+  age: 30,
+  isEmployed: true,
+};
+
+Set:
+----
+let uniqueValues = new Set([1, 2, 3, 3, 4]);
+console.log(uniqueValues); // Set(4) { 1, 2, 3, 4 }
+
+Map:
+----
+let map = new Map();
+map.set("name", "Bob");
+map.set("age", 25);
+console.log(map.get("name")); // "Bob"
+
+
+=>Difference Between == and ===
+== performs type coercion before comparision and then it compares values after converting them into a common type
+=== doesnot perform type coercion and it compares both value and type
+Eg: console.log(5 == '5') //true (coerces string to number)
+console.log(5 === '5') //false (different types)
+
+=> Difference between Null and Undefined
+Null is a intentional absence of value, it must be explicitly assigned to a variable. 
+typeof null returns "object" which is a know JS Bug.
+
+Undefined represents a  variable that has been declared but not assigned a value.
+typeof undefined returns undefined.
+
+=> Hoisting in Javascript
+Hoisting is a behavior in JS where variable and function declarations are moved to the top of their respeective
+scopes during compilation phase, before code is executed. This means regardless of where variables
+and functions are declared in the code, they treated as declared at th top of their scope.
+
+Eg:
+console.log(x) // undefined;
+var x =5;
+console.log(x) // 5
+
+var x;
+console.log(x) //undefined
+x-5;
+console.log(x) //5
+
+sayHello(); //Hello
+function sayHello(){console.log("Hello")}
+
+sayHi(); //TypeError: sayHi is not a function
+const sayHi = funnction() {console.log('Hello')}
+
+Note:
+======
+let and const variables are hoisted but not initialized. This leads to "TDZ" where accessing
+the variable before its decllaration results in Reference Error.
+console.log(y) //Cannot access y before declaration
+let y=10;
+
+=> Difference between var, let and const
+var -> It is function scoped or global-scoped. Can be redeclared, updated, hoisted and initialized
+        with undefined.
+let -> block-scoped, hoisted  but not initialized(TDZ)
+const -> blok-scoped, cannot be updated or redeclared. Hoisted  but not initialized(TDZ)
+
+=>Variable Scope in JS
+-> Global Scope - Variables declared outside any function or block
+-> local scope - variables declared  inside function or block
+Javascript uses lexical scoping which means inner function can able to access variables in their 
+outer scope. This is known as Closure.
+
+=>Variable Shadowing
+Variable Shadowing occurs when a variable declared in a certain scope has same  name as a variable
+in outer scope. The inner variable "shadows" the outer one, eeffectively hiding it.
+Eg:
+let x =1;
+function numbers(){
+let x = 2;
+console.log(x) //2
+}
+numbers();
+console.log(x) //;
+
+Closure -> create a counter example
+
+=> Different ways to define a function in JS
+//Function Declaration : Hoisted annd  can be called before its defined
+Eg: function greet(name){
+  return `Hello ${name}`;
+}
+//Function Expression: Assigned to a variable, can't be hoisted
+const greet = function(name){return `Hello ${name}`}
+
+//Arrow Function : Shorter syntax, lexically binds 'this'
+const greet = (name) => return `Hello ${name}`
+
+//Function Connstructor - Creates a  function dynamically
+const greet = new Function("name", "return `Hello ${name}`)
+
+//IIFE - Immediately Invoked Function
+(function(){
+console.log("Heelo World")
+})()
+
+=> Higher Order  Function
+A higher order function that treats other functions as data either by taking them as arguments
+or returning them.
+
+=> Pure Function
+A pure function is a function which always returns the same output for the same inputs. It has no
+side effects and doesn't rely on external state. Makes code predictable and easier to test.
+Ex: Sum of 2 numbers //always returns same output if we pass same inputs
+ 
+
+
+
+
+
